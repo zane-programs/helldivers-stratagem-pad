@@ -1,10 +1,17 @@
 #!/bin/bash
 
+# Find the non-root user's home directory
+USER_HOME=$(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 && $1 != "nobody" {print $6}' | head -n1)
+if [ -z "$USER_HOME" ]; then
+    echo "Error: Could not find non-root user home directory"
+    exit 1
+fi
+
 # Wait for the desktop to fully load
 sleep 10
 
 # Navigate to the project directory
-cd /home/pi/helldivers-stratagem-pad
+cd "$USER_HOME/helldivers-stratagem-pad"
 
 # Start the HID server in the background
 npm start &

@@ -2,6 +2,6 @@
 Type=Application
 Name=Helldivers Stratagem Pad Kiosk
 Comment=Start HID server and open Chromium in kiosk mode
-Exec=/home/pi/helldivers-stratagem-pad/autostart/helldivers-kiosk.sh
+Exec=sh -c "$(getent passwd | awk -F: '\$3 >= 1000 && \$3 < 65534 && \$1 != \"nobody\" {print \$6}' | head -n1)/helldivers-stratagem-pad/autostart/helldivers-kiosk.sh"
 Terminal=false
 Hidden=false
