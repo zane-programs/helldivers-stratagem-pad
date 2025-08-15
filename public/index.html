@@ -442,12 +442,11 @@
           const key = ARROW_MAPPINGS[direction];
           currentInput.push(key.toUpperCase());
           
-          // Send key press immediately - use pressKey with modifiers for real-time response
+          // Send key press while CTRL is being held
           sendMessage({ 
-            type: 'pressKey', 
+            type: 'pressWithHeld', 
             key: key,
             options: { 
-              modifiers: ['ctrl'],
               holdTime: 50,
               autoRelease: true 
             }
@@ -472,18 +471,13 @@
           ctrlActive = !ctrlActive;
           ctrlButton.classList.toggle("active", ctrlActive);
 
-          // if (ctrlActive) {
-          //   // Send Ctrl press immediately when activated
-          //   sendMessage({ 
-          //     type: 'pressKey', 
-          //     key: 'ctrl',
-          //     options: { 
-          //       holdTime: 0,
-          //       autoRelease: false 
-          //     }
-          //   });
-          // } else {
-          if (!ctrlActive) {
+          if (ctrlActive) {
+            // Hold the CTRL key when activated
+            sendMessage({ 
+              type: 'holdKey', 
+              key: 'ctrl'
+            });
+          } else {
             // Release all keys and clear input when deactivated
             sendMessage({ type: 'releaseAll' });
             currentInput = [];
