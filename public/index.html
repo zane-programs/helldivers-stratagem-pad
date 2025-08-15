@@ -131,25 +131,32 @@
         height: min(90vw, 90vh);
         max-width: 600px;
         max-height: 600px;
+        transform: translateX(-50px);
       }
 
       .arrows button {
         background-color: transparent;
         border: none;
-        padding: 0;
-        margin: 0;
+        padding: 15px;
+        margin: 5px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
       }
 
       .arrows button img {
         width: 100%;
         height: 100%;
-        max-width: min(25vw, 25vh, 150px);
-        max-height: min(25vw, 25vh, 150px);
+        max-width: min(30vw, 30vh, 180px);
+        max-height: min(30vw, 30vh, 180px);
         object-fit: contain;
+      }
+
+      .arrows button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
       }
 
       .arrows button:hover img {
@@ -192,24 +199,29 @@
 
       .ctrl-button {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
-        padding: 12px 20px;
+        bottom: 30px;
+        right: 30px;
+        padding: 20px 30px;
         background-color: #1a1a1a;
         color: #ffffff;
-        border: 2px solid #333;
-        border-radius: 8px;
+        border: 3px solid #333;
+        border-radius: 12px;
         font-family: "Courier New", Courier, monospace;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
         cursor: pointer;
         user-select: none;
         z-index: 1000;
+        min-width: 120px;
+        min-height: 60px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       }
 
       .ctrl-button:hover {
         background-color: #2a2a2a;
         border-color: #555;
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       }
 
       .ctrl-button.active {
