@@ -460,17 +460,18 @@
           ctrlActive = !ctrlActive;
           ctrlButton.classList.toggle("active", ctrlActive);
 
-          if (ctrlActive) {
-            // Send Ctrl press immediately when activated
-            sendMessage({ 
-              type: 'pressKey', 
-              key: 'ctrl',
-              options: { 
-                holdTime: 0,
-                autoRelease: false 
-              }
-            });
-          } else {
+          // if (ctrlActive) {
+          //   // Send Ctrl press immediately when activated
+          //   sendMessage({ 
+          //     type: 'pressKey', 
+          //     key: 'ctrl',
+          //     options: { 
+          //       holdTime: 0,
+          //       autoRelease: false 
+          //     }
+          //   });
+          // } else {
+          if (!ctrlActive) {
             // Release all keys and clear input when deactivated
             sendMessage({ type: 'releaseAll' });
             currentInput = [];
