@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #006674;
+        overflow: hidden;
+      }
+
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #004450;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        transition: opacity 0.3s ease;
+      }
+
+      .loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #00c8d5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-text {
+        color: #ffffff;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 18px;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .stratagem-display {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.9);
+        border: 3px solid;
+        border-radius: 12px;
+        padding: 30px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1500;
+        min-width: 250px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .stratagem-display.active {
+        display: flex;
+      }
+
+      .stratagem-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+      }
+
+      .stratagem-name {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      .input-display {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: #00c8d5;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 24px;
+        font-weight: bold;
+        display: none;
+        z-index: 1100;
+      }
+
+      .input-display.active {
+        display: block;
+      }
+
+      .arrows {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        aspect-ratio: 1;
+        width: min(90vw, 90vh);
+        height: min(90vw, 90vh);
+        max-width: 600px;
+        max-height: 600px;
+      }
+
+      .arrows button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .arrows button img {
+        width: 100%;
+        height: 100%;
+        max-width: min(25vw, 25vh, 150px);
+        max-height: min(25vw, 25vh, 150px);
+        object-fit: contain;
+      }
+
+      .arrows button:hover img {
+        filter: brightness(1.3);
+      }
+
+      .arrows button:active img {
+        filter: brightness(0.7);
+      }
+
+      .arrows button.disabled {
+        cursor: not-allowed;
+        opacity: 0.3;
+        pointer-events: none;
+      }
+
+      .arrows button.disabled img {
+        filter: grayscale(100%);
+      }
+
+      .arrow-up {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .arrow-left {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .arrow-right {
+        grid-column: 3;
+        grid-row: 2;
+      }
+
+      .arrow-down {
+        grid-column: 2;
+        grid-row: 3;
+      }
+
+      .ctrl-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        background-color: #1a1a1a;
+        color: #ffffff;
+        border: 2px solid #333;
+        border-radius: 8px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+        z-index: 1000;
+      }
+
+      .ctrl-button:hover {
+        background-color: #2a2a2a;
+        border-color: #555;
+      }
+
+      .ctrl-button.active {
+        background-color: #00a8b5;
+        border-color: #00c8d5;
+      }
+
+      .ctrl-button:active {
+        background-color: #005055;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading Stratagems...</div>
+    </div>
+
+    <div class="input-display" id="inputDisplay"></div>
+
+    <div class="stratagem-display" id="stratagemDisplay">
+      <img class="stratagem-icon" id="stratagemIcon" src="" alt="" />
+      <div class="stratagem-name" id="stratagemName"></div>
+    </div>
+
+    <div class="arrows">
+      <button class="arrow-up">
+        <img draggable="false" src="./img/Up_Arrow.png" alt="Up Arrow" />
+      </button>
+      <button class="arrow-left">
+        <img draggable="false" src="./img/Left_Arrow.png" alt="Left Arrow" />
+      </button>
+      <button class="arrow-right">
+        <img draggable="false" src="./img/Right_Arrow.png" alt="Right Arrow" />
+      </button>
+      <button class="arrow-down">
+        <img draggable="false" src="./img/Down_Arrow.png" alt="Down Arrow" />
+      </button>
+    </div>
+    <button class="ctrl-button" id="ctrlButton">CTRL</button>
+    <script>
+      (function () {
+        const ARROW_MAPPINGS = {
+          up: "W",
+          down: "S",
+          left: "A",
+          right: "D",
+        };
+
+        let stratagems = [];
+        let currentInput = [];
+        let ctrlActive = false;
+        let isDisplayingStratagem = false;
+
+        const ctrlButton = document.getElementById("ctrlButton");
+        const arrowButtons = document.querySelectorAll(".arrows button");
+        const loadingScreen = document.getElementById("loadingScreen");
+        const inputDisplay = document.getElementById("inputDisplay");
+        const stratagemDisplay = document.getElementById("stratagemDisplay");
+        const stratagemIcon = document.getElementById("stratagemIcon");
+        const stratagemName = document.getElementById("stratagemName");
+
+        async function loadStratagems() {
+          try {
+            const response = await fetch("./stratagems.json");
+            if (!response.ok) {
+              throw new Error("Failed to load stratagems");
+            }
+            stratagems = await response.json();
+            console.log(`Loaded ${stratagems.length} stratagems`);
+            hideLoadingScreen();
+          } catch (error) {
+            console.error("Error loading stratagems:", error);
+            loadingScreen.querySelector(".loading-text").textContent =
+              "Error loading stratagems";
+          }
+        }
+
+        function hideLoadingScreen() {
+          loadingScreen.classList.add("hidden");
+          setTimeout(() => {
+            loadingScreen.style.display = "none";
+          }, 300);
+        }
+
+        function updateArrowButtons() {
+          arrowButtons.forEach((button) => {
+            if (ctrlActive && !isDisplayingStratagem) {
+              button.classList.remove("disabled");
+            } else {
+              button.classList.add("disabled");
+            }
+          });
+        }
+
+        function updateInputDisplay() {
+          if (currentInput.length > 0 && ctrlActive) {
+            inputDisplay.textContent = currentInput.join(" → ");
+            inputDisplay.classList.add("active");
+          } else {
+            inputDisplay.classList.remove("active");
+          }
+        }
+
+        function checkForStratagem() {
+          for (const stratagem of stratagems) {
+            if (arraysEqual(currentInput, stratagem.inputCode)) {
+              displayStratagem(stratagem);
+              return true;
+            }
+          }
+          return false;
+        }
+
+        function arraysEqual(a, b) {
+          if (a.length !== b.length) return false;
+          for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i]) return false;
+          }
+          return true;
+        }
+
+        function displayStratagem(stratagem) {
+          isDisplayingStratagem = true;
+
+          stratagemIcon.src = `./img/Helldivers-2-Stratagems-icons-svg/${stratagem.icon}`;
+          stratagemIcon.alt = stratagem.name;
+          stratagemName.textContent = stratagem.name;
+          stratagemDisplay.style.borderColor = stratagem.color;
+          stratagemDisplay.classList.add("active");
+
+          updateArrowButtons();
+
+          setTimeout(() => {
+            resetStratagem();
+          }, 2000);
+        }
+
+        function resetStratagem() {
+          ctrlActive = false;
+          ctrlButton.classList.remove("active");
+          currentInput = [];
+          isDisplayingStratagem = false;
+
+          stratagemDisplay.classList.remove("active");
+          inputDisplay.classList.remove("active");
+
+          updateArrowButtons();
+        }
+
+        function handleArrowClick(direction) {
+          if (!ctrlActive || isDisplayingStratagem) return;
+
+          const key = ARROW_MAPPINGS[direction];
+          currentInput.push(key);
+          updateInputDisplay();
+
+          if (!checkForStratagem()) {
+            const maxLength = Math.max(
+              ...stratagems.map((s) => s.inputCode.length)
+            );
+            if (currentInput.length >= maxLength) {
+              currentInput = [];
+              updateInputDisplay();
+            }
+          }
+        }
+
+        ctrlButton.addEventListener("click", () => {
+          if (isDisplayingStratagem) return;
+
+          ctrlActive = !ctrlActive;
+          ctrlButton.classList.toggle("active", ctrlActive);
+
+          if (!ctrlActive) {
+            currentInput = [];
+            updateInputDisplay();
+          }
+
+          updateArrowButtons();
+        });
+
+        arrowButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            if (ctrlActive && !isDisplayingStratagem) {
+              const direction = button.className
+                .replace("arrow-", "")
+                .replace(" disabled", "");
+              handleArrowClick(direction);
+            }
+          });
+        });
+
+        loadStratagems();
+        updateArrowButtons();
+      })();
+    </script>
+  </body>
+</html>

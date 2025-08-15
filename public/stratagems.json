@@ -1,0 +1,562 @@
+[
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Precision Strike",
+    "inputCode": ["D", "D", "W"],
+    "icon": "Bridge/Orbital Precision Strike.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Gatling Barrage",
+    "inputCode": ["D", "S", "A", "W", "W"],
+    "icon": "Orbital Cannons/Orbital Gatling Barrage.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Airburst Strike",
+    "inputCode": ["D", "D", "D"],
+    "icon": "Orbital Cannons/Orbital Airburst Strike.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Napalm Barrage",
+    "inputCode": ["D", "D", "S", "A", "D", "W"],
+    "icon": "Orbital Cannons/Orbital Napalm Barrage.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital 120MM HE Barrage",
+    "inputCode": ["D", "D", "S", "A", "D", "S"],
+    "icon": "Orbital Cannons/Orbital 120MM HE Barrage.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Walking Barrage",
+    "inputCode": ["D", "S", "D", "S", "D", "S"],
+    "icon": "Orbital Cannons/Orbital Walking Barrage.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital 380MM HE Barrage",
+    "inputCode": ["D", "S", "W", "W", "A", "S", "S"],
+    "icon": "Orbital Cannons/Orbital 380MM HE Barrage.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Railcannon Strike",
+    "inputCode": ["D", "W", "S", "S", "D"],
+    "icon": "Orbital Cannons/Orbital Railcannon Strike.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Laser",
+    "inputCode": ["D", "S", "W", "D", "S"],
+    "icon": "Orbital Cannons/Orbital Laser.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital EMS Strike",
+    "inputCode": ["D", "D", "A", "S"],
+    "icon": "Bridge/Orbital EMS Strike.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Gas Strike",
+    "inputCode": ["D", "D", "S", "D"],
+    "icon": "Bridge/Orbital Gas Strike.svg"
+  },
+  {
+    "category": "Offensive: Orbital",
+    "color": "rgb(205, 92, 92)",
+    "name": "Orbital Smoke Strike",
+    "inputCode": ["D", "D", "S", "W"],
+    "icon": "Bridge/Orbital Smoke Strike.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle 500kg Bomb",
+    "inputCode": ["W", "D", "S", "S", "S"],
+    "icon": "Hangar/Eagle 500KG Bomb.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle Strafing Run",
+    "inputCode": ["W", "D", "D"],
+    "icon": "Hangar/Eagle Strafing Run.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle 110MM Rocket Pods",
+    "inputCode": ["W", "D", "W", "A"],
+    "icon": "Hangar/Eagle 110MM Rocket Pods.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle Airstrike",
+    "inputCode": ["W", "D", "S", "D"],
+    "icon": "Hangar/Eagle Airstrike.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle Cluster Bomb",
+    "inputCode": ["W", "D", "S", "S", "D"],
+    "icon": "Hangar/Eagle Cluster Bomb.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle Napalm Airstrike",
+    "inputCode": ["W", "D", "S", "W"],
+    "icon": "Hangar/Eagle Napalm Airstrike.svg"
+  },
+  {
+    "category": "Offensive: Eagle",
+    "color": "rgb(205, 92, 92)",
+    "name": "Eagle Smoke Strike",
+    "inputCode": ["W", "D", "W", "S"],
+    "icon": "Hangar/Eagle Smoke Strike.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "CQC-1 One True Flag",
+    "inputCode": ["S", "A", "D", "D", "W"],
+    "icon": "Masters of Ceremony/One True Flag.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "MG-43 Machine Gun",
+    "inputCode": ["S", "A", "S", "W", "D"],
+    "icon": "Patriotic Administration Center/Machine Gun.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "M-105 Stalwart",
+    "inputCode": ["S", "A", "S", "W", "W", "A"],
+    "icon": "Patriotic Administration Center/Stalwart.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "MG-206 Heavy Machine Gun",
+    "inputCode": ["S", "A", "W", "S", "S"],
+    "icon": "Patriotic Administration Center/Heavy Machine Gun.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "RS-422 Railgun",
+    "inputCode": ["S", "D", "S", "W", "A", "D"],
+    "icon": "Patriotic Administration Center/Railgun.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "APW-1 Anti-Materiel Rifle",
+    "inputCode": ["S", "A", "D", "W", "S"],
+    "icon": "Patriotic Administration Center/Anti-Materiel Rifle.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "GL-21 Grenade Launcher",
+    "inputCode": ["S", "A", "W", "A", "S"],
+    "icon": "Engineering Bay/Grenade Launcher.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "GL-52 De-Escalator",
+    "inputCode": ["A", "D", "W", "A", "D"],
+    "icon": "Force of Law/GL-52 De-Escalator.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "TX-41 Sterilizer",
+    "inputCode": ["S", "A", "W", "S", "A"],
+    "icon": "Chemical Agents/Sterilizer.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "FLAM-40 Flamethrower",
+    "inputCode": ["S", "A", "W", "S", "W"],
+    "icon": "Patriotic Administration Center/Flamethrower.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "LAS-98 Laser Cannon",
+    "inputCode": ["S", "A", "S", "W", "A"],
+    "icon": "Engineering Bay/Laser Cannon.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "LAS-99 Quasar Cannon",
+    "inputCode": ["S", "S", "W", "A", "D"],
+    "icon": "Engineering Bay/Quasar Cannon.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "ARC-3 Arc Thrower",
+    "inputCode": ["S", "D", "S", "W", "A", "A"],
+    "icon": "Engineering Bay/Arc Thrower.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "MLS-4X Commando",
+    "inputCode": ["S", "A", "W", "S", "D"],
+    "icon": "Patriotic Administration Center/Commando.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "EAT-17 Expendable Anti-tank",
+    "inputCode": ["S", "S", "A", "W", "D"],
+    "icon": "Patriotic Administration Center/Expendable Anti-Tank.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "AC-8 Autocannon",
+    "inputCode": ["S", "A", "S", "W", "W", "D"],
+    "icon": "Patriotic Administration Center/Autocannon.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "RL-77 Airburst Rocket Launcher",
+    "inputCode": ["S", "W", "W", "A", "D"],
+    "icon": "Patriotic Administration Center/Airburst Rocket Launcher.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "FAF-14 Spear Launcher",
+    "inputCode": ["S", "S", "W", "S", "S"],
+    "icon": "Patriotic Administration Center/Spear.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "StA-X3 W.A.S.P. Launcher",
+    "inputCode": ["S", "S", "W", "S", "D"],
+    "icon": "Patriotic Administration Center/StA-X3 W.A.S.P. Launcher.svg"
+  },
+  {
+    "category": "Supply: Support Weapons",
+    "color": "rgb(123, 175, 212)",
+    "name": "GR-8 Recoilless Rifle",
+    "inputCode": ["S", "A", "D", "D", "A"],
+    "icon": "Patriotic Administration Center/Recoilless Rifle.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "B-1 Supply Pack",
+    "inputCode": ["S", "A", "S", "W", "W", "S"],
+    "icon": "Engineering Bay/Supply Pack.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "B-100 Portable Hellbomb",
+    "inputCode": ["S", "D", "W", "W", "W"],
+    "icon": "Servants of Freedom/Hellbomb Portable.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "LIFT-860 Hover Pack",
+    "inputCode": ["S", "W", "W", "S", "A", "D"],
+    "icon": "Borderline Justice/Hover Pack.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "LIFT-850 Jump Pack",
+    "inputCode": ["S", "W", "W", "S", "W"],
+    "icon": "Hangar/Jump Pack.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "SH-32 Shield Generator Pack",
+    "inputCode": ["S", "W", "A", "D", "A", "D"],
+    "icon": "Engineering Bay/Shield Generator Pack.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "SH-51 Directional Shield Backpack",
+    "inputCode": ["S", "W", "A", "D", "W", "W"],
+    "icon": "Urban Legends/Directional Shield.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "SH-20 Ballistic Shield Backpack",
+    "inputCode": ["S", "A", "S", "S", "W", "A"],
+    "icon": "Engineering Bay/Ballistic Shield Backpack.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "AX/ARC-3 \"Guard Dog\" K-9",
+    "inputCode": ["S", "W", "A", "W", "D", "A"],
+    "icon": "Force of Law/Guard Dog K-9.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "AX/AR-23 \"Guard Dog\"",
+    "inputCode": ["S", "W", "A", "W", "D", "S"],
+    "icon": "Robotics Workshop/Guard Dog.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "AX/LAS-5 \"Guard Dog\" Rover",
+    "inputCode": ["S", "W", "A", "W", "D", "D"],
+    "icon": "Engineering Bay/Guard Dog Rover.svg"
+  },
+  {
+    "category": "Supply: Backpacks",
+    "color": "rgb(123, 175, 212)",
+    "name": "AX/TX-13 \"Guard Dog\" Dog Breath",
+    "inputCode": ["S", "W", "A", "W", "D", "W"],
+    "icon": "Chemical Agents/Guard Dog Breath.svg"
+  },
+  {
+    "category": "Supply: Vehicles",
+    "color": "rgb(123, 175, 212)",
+    "name": "M-102 Fast Recon Vehicle",
+    "inputCode": ["A", "S", "D", "S", "D", "S", "W"],
+    "icon": "Hangar/Fast Recon Vehicle.svg"
+  },
+  {
+    "category": "Supply: Vehicles",
+    "color": "rgb(123, 175, 212)",
+    "name": "EXO-49 Emancipator Exosuit",
+    "inputCode": ["A", "S", "D", "W", "A", "S", "W"],
+    "icon": "Robotics Workshop/Emancipator Exosuit.svg"
+  },
+  {
+    "category": "Supply: Vehicles",
+    "color": "rgb(123, 175, 212)",
+    "name": "EXO-45 Patriot Exosuit",
+    "inputCode": ["A", "S", "D", "W", "A", "S", "S"],
+    "icon": "Robotics Workshop/Patriot Exosuit.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/G-16 Gatling Sentry",
+    "inputCode": ["S", "W", "D", "A"],
+    "icon": "Robotics Workshop/Gatling Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/MG-43 Machine Gun Sentry",
+    "inputCode": ["S", "W", "D", "D", "W"],
+    "icon": "Robotics Workshop/Machine Gun Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "E/FLAM-40 Flame Sentry",
+    "inputCode": ["S", "W", "D", "S", "W", "W"],
+    "icon": "Urban Legends/Flame Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/MLS-4X Rocket Sentry",
+    "inputCode": ["S", "W", "D", "D", "A"],
+    "icon": "Robotics Workshop/Rocket Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/AC-8 Autocannon Sentry",
+    "inputCode": ["S", "W", "D", "W", "A", "W"],
+    "icon": "Robotics Workshop/Autocannon Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/M-23 EMS Mortar Sentry",
+    "inputCode": ["S", "W", "D", "S", "D"],
+    "icon": "Robotics Workshop/EMS Mortar Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/M-12 Mortar Sentry",
+    "inputCode": ["S", "W", "D", "D", "S"],
+    "icon": "Robotics Workshop/Mortar Sentry.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "FX-12 Shield Generator Relay",
+    "inputCode": ["S", "S", "A", "D", "A", "D"],
+    "icon": "Bridge/Shield Generator Relay.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "E/GL-21 Grenadier Battlement",
+    "inputCode": ["S", "D", "S", "A", "D"],
+    "icon": "Bridge/Grenadier Battlement.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "E/AT-12 Anti-Tank Emplacement",
+    "inputCode": ["S", "W", "A", "D", "D", "D"],
+    "icon": "Urban Legends/Anti-Tank Emplacement.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "E/MG-101 HMG Emplacement",
+    "inputCode": ["S", "W", "A", "D", "D", "A"],
+    "icon": "Bridge/HMG Emplacement.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "A/ARC-3 Tesla Tower",
+    "inputCode": ["S", "W", "D", "W", "A", "D"],
+    "icon": "Bridge/Tesla Tower.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "MD-17 Anti-Tank Mines",
+    "inputCode": ["S", "A", "W", "W"],
+    "icon": "Engineering Bay/Anti-Tank Mines.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "MD-8 Gas Mines",
+    "inputCode": ["S", "A", "A", "D"],
+    "icon": "Engineering Bay/Gas Mine.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "MD-6 Anti-Personnel Minefield",
+    "inputCode": ["S", "A", "W", "D"],
+    "icon": "Engineering Bay/Anti-Personnel Minefield.svg"
+  },
+  {
+    "category": "Defensive",
+    "color": "rgb(147, 197, 114)",
+    "name": "MD-I4 Incendiary Mines",
+    "inputCode": ["S", "A", "A", "S"],
+    "icon": "Engineering Bay/Incendiary Mines.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Reinforce",
+    "inputCode": ["W", "S", "D", "A", "W"],
+    "icon": "General Stratagems/Reinforce.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "SOS Beacon",
+    "inputCode": ["W", "S", "D", "W"],
+    "icon": "General Stratagems/SOS Beacon.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Resupply",
+    "inputCode": ["S", "S", "W", "D"],
+    "icon": "General Stratagems/Resupply.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "NUX-223 Hellbomb",
+    "inputCode": ["S", "W", "A", "S", "W", "D", "S", "W"],
+    "icon": "General Stratagems/Hellbomb.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "SSSD Delivery",
+    "inputCode": ["S", "S", "S", "W", "W"],
+    "icon": "General Stratagems/Upload Data.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Seismic Probe",
+    "inputCode": ["W", "W", "A", "D", "S", "S"],
+    "icon": "General Stratagems/Seismic Probe.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Upload Data",
+    "inputCode": ["A", "D", "W", "W", "W"],
+    "icon": "General Stratagems/Upload Data.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Eagle Rearm",
+    "inputCode": ["W", "W", "A", "W", "D"],
+    "icon": "Hangar/Eagle Rearm.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "SEAF Artillery",
+    "inputCode": ["D", "W", "W", "S"],
+    "icon": "General Stratagems/SEAF Artillery.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Super Earth Flag",
+    "inputCode": ["S", "W", "S", "W"],
+    "icon": "General Stratagems/Super Earth Flag.svg"
+  },
+  {
+    "category": "Mission Stratagems",
+    "color": "rgb(244, 196, 48)",
+    "name": "Hive Breaker Drill",
+    "inputCode": ["A", "W", "S", "D", "S", "S"],
+    "icon": "General Stratagems/Hive Breaker Drill.svg"
+  }
+]
