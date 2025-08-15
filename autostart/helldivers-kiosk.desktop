@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Helldivers Stratagem Pad Kiosk
+Comment=Start HID server and open Chromium in kiosk mode
+Exec=/home/pi/helldivers-stratagem-pad/autostart/helldivers-kiosk.sh
+Terminal=false
+Hidden=false
