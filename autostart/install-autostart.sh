@@ -57,9 +57,13 @@ EOF
     chown -R "$USER_NAME:$USER_NAME" "$USER_HOME/.config/autostart"
     chown -R "$USER_NAME:$USER_NAME" "$USER_HOME/.config/systemd/user"
     
-    # Enable the service for the user
-    su - "$USER_NAME" -c "systemctl --user daemon-reload"
-    su - "$USER_NAME" -c "systemctl --user enable helldivers-kiosk.service"
+    # Try to enable the service for the user (may fail if not in a user session)
+    if su - "$USER_NAME" -c "systemctl --user daemon-reload" 2>/dev/null; then
+        su - "$USER_NAME" -c "systemctl --user enable helldivers-kiosk.service" 2>/dev/null
+        echo "Systemd user service enabled successfully"
+    else
+        echo "Note: Systemd user service created but not enabled (will auto-enable on next user login)"
+    fi
 fi
 
 echo "Autostart installation complete!"
