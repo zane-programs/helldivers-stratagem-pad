@@ -253,16 +253,18 @@
     <script>
       (function () {
         const ARROW_MAPPINGS = {
-          up: "W",
-          down: "S",
-          left: "A",
-          right: "D",
+          up: "w",
+          down: "s",
+          left: "a",
+          right: "d",
         };
 
         let stratagems = [];
         let currentInput = [];
         let ctrlActive = false;
         let isDisplayingStratagem = false;
+        let ws = null;
+        let serverConnected = false;
 
         const ctrlButton = document.getElementById("ctrlButton");
         const arrowButtons = document.querySelectorAll(".arrows button");
@@ -271,6 +273,63 @@
         const stratagemDisplay = document.getElementById("stratagemDisplay");
         const stratagemIcon = document.getElementById("stratagemIcon");
         const stratagemName = document.getElementById("stratagemName");
+
+        // WebSocket connection
+        function connectWebSocket() {
+          try {
+            ws = new WebSocket(`ws://${window.location.host}`);
+            
+            ws.onopen = () => {
+              console.log('[Client] Connected to server');
+              serverConnected = true;
+              // Connect to HID device
+              sendMessage({ type: 'connect' });
+            };
+            
+            ws.onmessage = (event) => {
+              try {
+                const message = JSON.parse(event.data);
+                handleServerMessage(message);
+              } catch (error) {
+                console.error('[Client] Error parsing message:', error);
+              }
+            };
+            
+            ws.onclose = () => {
+              console.log('[Client] Disconnected from server');
+              serverConnected = false;
+              // Attempt to reconnect after 2 seconds
+              setTimeout(connectWebSocket, 2000);
+            };
+            
+            ws.onerror = (error) => {
+              console.error('[Client] WebSocket error:', error);
+              serverConnected = false;
+            };
+          } catch (error) {
+            console.error('[Client] Failed to connect:', error);
+            setTimeout(connectWebSocket, 2000);
+          }
+        }
+
+        function sendMessage(message) {
+          if (ws && ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify(message));
+          }
+        }
+
+        function handleServerMessage(message) {
+          switch (message.type) {
+            case 'connected':
+              console.log('[Client] HID device connected');
+              break;
+            case 'error':
+              console.error('[Client] Server error:', message.message);
+              break;
+            default:
+              console.log('[Client] Received:', message);
+          }
+        }
 
         async function loadStratagems() {
           try {
@@ -349,6 +408,11 @@
         }
 
         function resetStratagem() {
+          // Release Ctrl key on server
+          if (serverConnected) {
+            sendMessage({ type: 'releaseAll' });
+          }
+          
           ctrlActive = false;
           ctrlButton.classList.remove("active");
           currentInput = [];
@@ -361,10 +425,22 @@
         }
 
         function handleArrowClick(direction) {
-          if (!ctrlActive || isDisplayingStratagem) return;
+          if (!ctrlActive || isDisplayingStratagem || !serverConnected) return;
 
           const key = ARROW_MAPPINGS[direction];
-          currentInput.push(key);
+          currentInput.push(key.toUpperCase());
+          
+          // Send key press immediately - use pressKey with modifiers for real-time response
+          sendMessage({ 
+            type: 'pressKey', 
+            key: key,
+            options: { 
+              modifiers: ['ctrl'],
+              holdTime: 50,
+              autoRelease: true 
+            }
+          });
+          
           updateInputDisplay();
 
           if (!checkForStratagem()) {
@@ -379,12 +455,24 @@
         }
 
         ctrlButton.addEventListener("click", () => {
-          if (isDisplayingStratagem) return;
+          if (isDisplayingStratagem || !serverConnected) return;
 
           ctrlActive = !ctrlActive;
           ctrlButton.classList.toggle("active", ctrlActive);
 
-          if (!ctrlActive) {
+          if (ctrlActive) {
+            // Send Ctrl press immediately when activated
+            sendMessage({ 
+              type: 'pressKey', 
+              key: 'ctrl',
+              options: { 
+                holdTime: 0,
+                autoRelease: false 
+              }
+            });
+          } else {
+            // Release all keys and clear input when deactivated
+            sendMessage({ type: 'releaseAll' });
             currentInput = [];
             updateInputDisplay();
           }
@@ -403,8 +491,10 @@
           });
         });
 
+        // Initialize application
         loadStratagems();
         updateArrowButtons();
+        connectWebSocket();
       })();
     </script>
   </body>
