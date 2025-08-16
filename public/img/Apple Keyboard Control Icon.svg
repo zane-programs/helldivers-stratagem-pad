@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="width: 1em; height: 1em; vertical-align: middle; overflow: hidden;" version="1.1" viewBox="180.05 170.67 663.89 392.11">
+  <defs>
+    <filter id="hudGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <!-- subtle layered glow -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+      <!-- glow color matches fill/stroke -->
+      <feFlood flood-color="#33f6ff" flood-opacity="1" result="flood"/>
+      <feComposite in="flood" in2="blur2" operator="in"/>
+    </filter>
+  </defs>
+
+  <path d="M843.946667 502.613333l-60.586667 60.16L512 291.413333l-271.36 271.36-60.586667-60.16L512 170.666667l331.946667 331.946666z" 
+        style="fill:#33f6ff; stroke:#33f6ff; stroke-width:1; filter:url(#hudGlow)"/>
+</svg>
