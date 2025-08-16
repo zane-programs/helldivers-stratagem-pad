@@ -22,6 +22,7 @@
   "homepage": "https://github.com/zane-programs/helldivers-stratagem-pad#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "tplink-lightbulb": "^1.8.0",
     "ws": "^8.18.3"
   }
 }

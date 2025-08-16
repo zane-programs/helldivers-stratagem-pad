@@ -11,13 +11,16 @@ const express = require('express');
 const { WebSocketServer } = require('ws');
 const http = require('http');
 const path = require('path');
+const fs = require('fs');
 const { HIDKeyboard } = require('./lib/hid.js');
+const { LightManager } = require('./lib/lights.js');
 
 class StratagemServer {
   constructor(options = {}) {
     this.port = options.port || 3000;
     this.host = options.host || '127.0.0.1';
     this.publicDir = options.publicDir || path.join(__dirname, '../public');
+    this.config = this.loadConfig();
     
     // Initialize Express app
     this.app = express();
@@ -28,6 +31,9 @@ class StratagemServer {
     
     // Initialize HID keyboard
     this.keyboard = new HIDKeyboard({ enableLogging: true });
+
+    // Initialize LightManager
+    this.lightManager = new LightManager(this.config.lightIp); // Replace with your light's IP
     
     this.setupExpress();
     this.setupWebSocket();
@@ -54,6 +60,25 @@ class StratagemServer {
         availableKeys: this.keyboard.getAvailableKeys()
       });
     });
+  }
+
+  loadConfig() {
+    const configPath = path.join(__dirname, '../config.json');
+    if (fs.existsSync(configPath)) {
+      const rawConfig = fs.readFileSync(configPath);
+      return JSON.parse(rawConfig);
+    }
+    
+    // Fallback to example config if config.json doesn't exist
+    const exampleConfigPath = path.join(__dirname, '../config.example.json');
+    if (fs.existsSync(exampleConfigPath)) {
+      const rawConfig = fs.readFileSync(exampleConfigPath);
+      return JSON.parse(rawConfig);
+    }
+
+    return {
+      lightIp: '127.0.0.1' // Default if no config file
+    };
   }
 
   setupWebSocket() {
@@ -116,6 +141,10 @@ class StratagemServer {
         
       case 'releaseAll':
         await this.handleReleaseAll(ws);
+        break;
+
+      case 'light-flash':
+        await this.handleLightFlash(ws, payload);
         break;
         
       default:
@@ -214,6 +243,20 @@ class StratagemServer {
       });
     } catch (error) {
       this.sendError(ws, `Failed to release all keys: ${error.message}`);
+    }
+  }
+
+  async handleLightFlash(ws, { color }) {
+    if (!color) throw new Error('Color is required');
+
+    try {
+      await this.lightManager.flash(color);
+      this.sendToClient(ws, {
+        type: 'lightFlashed',
+        color
+      });
+    } catch (error) {
+      this.sendError(ws, `Failed to flash light: ${error.message}`);
     }
   }
 

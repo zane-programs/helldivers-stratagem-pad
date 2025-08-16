@@ -166,9 +166,13 @@
         }
       }
 
-      function checkForStratagem() {
+      function checkSequence() {
         for (const stratagem of stratagems) {
           if (arraysEqual(currentInput, stratagem.inputCode) && ctrlActive) {
+            // Send light flash message to server
+            if (serverConnected) {
+              sendMessage({ type: 'light-flash', color: stratagem.color });
+            }
             displayStratagem(stratagem);
             return true;
           }
@@ -238,7 +242,7 @@
           
           updateInputDisplay();
 
-          if (!checkForStratagem()) {
+          if (!checkSequence()) {
             const maxLength = Math.max(
               ...stratagems.map((s) => s.inputCode.length)
             );
