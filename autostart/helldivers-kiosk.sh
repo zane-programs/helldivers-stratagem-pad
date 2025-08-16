@@ -20,4 +20,4 @@ npm start &
 sleep 5
 
 # Launch Chromium in kiosk mode
-DISPLAY=:0.0 chromium-browser http://localhost:3000 --kiosk --noerrdialogs --disable-infobars --no-first-run --enable-features=OverlayScrollbar --start-maximized
+DISPLAY=:0.0 chromium-browser http://localhost:3000 --kiosk --noerrdialogs --disable-infobars --no-first-run --enable-features=OverlayScrollbar --start-maximized --disable-pinch --overscroll-history-navigation=0
