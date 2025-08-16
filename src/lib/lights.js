@@ -37,7 +37,7 @@ class LightManager {
     this._flashTimeout = null;
   }
 
-  async flash(color, duration = 500) {
+  async flash(color, duration = 2000) {
     if (this._flashTimeout) {
       clearTimeout(this._flashTimeout);
       this._flashTimeout = null;
