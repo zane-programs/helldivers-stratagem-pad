@@ -16,6 +16,7 @@ const { HIDKeyboard } = require('./lib/hid.js');
 class StratagemServer {
   constructor(options = {}) {
     this.port = options.port || 3000;
+    this.host = options.host || '127.0.0.1';
     this.publicDir = options.publicDir || path.join(__dirname, '../public');
     
     // Initialize Express app
@@ -281,11 +282,11 @@ class StratagemServer {
 
   start() {
     return new Promise((resolve, reject) => {
-      this.server.listen(this.port, (error) => {
+      this.server.listen(this.port, this.host, (error) => {
         if (error) {
           reject(error);
         } else {
-          console.log(`[Server] Helldivers Stratagem Pad server running on http://localhost:${this.port}`);
+          console.log(`[Server] Helldivers Stratagem Pad server running on http://${this.host}:${this.port}`);
           console.log(`[Server] Serving files from: ${this.publicDir}`);
           resolve();
         }
