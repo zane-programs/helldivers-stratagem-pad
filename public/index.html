@@ -221,28 +221,42 @@
         if (isDisplayingStratagem || !serverConnected) return;
 
         const key = ARROW_MAPPINGS[direction];
-        currentInput.push(key.toUpperCase());
+        
+        if (ctrlActive) {
+          // Track input for stratagem matching when CTRL is held
+          currentInput.push(key.toUpperCase());
+          
+          // Send key press while CTRL is being held
+          sendMessage({
+            type: 'pressWithHeld',
+            key: key,
+            options: {
+              holdTime: 50,
+              autoRelease: true
+            }
+          });
+          
+          updateInputDisplay();
 
-        // Send key press while CTRL is being held
-        sendMessage({
-          type: 'pressWithHeld',
-          key: key,
-          options: {
-            holdTime: 50,
-            autoRelease: true
+          if (!checkForStratagem()) {
+            const maxLength = Math.max(
+              ...stratagems.map((s) => s.inputCode.length)
+            );
+            if (currentInput.length >= maxLength) {
+              currentInput = [];
+              updateInputDisplay();
+            }
           }
-        });
-
-        updateInputDisplay();
-
-        if (!checkForStratagem()) {
-          const maxLength = Math.max(
-            ...stratagems.map((s) => s.inputCode.length)
-          );
-          if (currentInput.length >= maxLength) {
-            currentInput = [];
-            updateInputDisplay();
-          }
+        } else {
+          // Send regular key press when CTRL is not held
+          sendMessage({
+            type: 'pressKey',
+            key: key,
+            options: {
+              holdTime: 50,
+              autoRelease: true
+            }
+          });
         }
       }
 
@@ -270,7 +284,7 @@
 
       arrowButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          if (ctrlActive && !isDisplayingStratagem) {
+          if (!isDisplayingStratagem) {
             const direction = button.className
               .replace("arrow-", "")
               .replace(" disabled", "");
